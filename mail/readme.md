@@ -1,8 +1,1 @@
-docker run -i -e TLS=YES -e mailhub=smtp.gmail.com:587 -e AuthUser=nine910ten@gmail.com -e AuthPass=song2656847 mail:test2 sh -c 'echo "test email" | mail -s "test email" 1062860666@qq.com'
-
-docker run -i -e TLS=YES -e mailhub=smtp.gmail.com:587 -e AuthUser=nine910ten@gmail.com -e AuthPass=song2656847 mail:test11 cat /var/log/mail.log
-
-
-docker run -i -e TLS=YES -e mailhub=smtp.gmail.com:587 -e AuthUser=nine910ten@gmail.com -e AuthPass=song2656847 mail:test2 /bin/bash
-
-docker run -i -v /c/Users/ssmtp.conf:/etc/ssmtp/ssmtp.conf debian:jessie_mail /bin/bash
+docker run -i --rm -e TLS=YES -e mailhub=smtp.gmail.com:587 -e AuthUser=xxx@gmail.com -e AuthPass=xxx philoles/mail sh -c 'df -h > /tmp/mail_report.log && free -m >> /tmp/mail_report.log && mail -s "$HOSTNAME disk and RAM report"xxx@gmail.com < /tmp/mail_report.log'
