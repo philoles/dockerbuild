@@ -1,11 +1,28 @@
-FROM debian:jessie
+FROM scaleway/ubuntu:amd64-xenial
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        mailutils \
-        ssmtp \
+RUN /usr/local/sbin/builder-enter
+
+# Install packages
+RUN sed -i '/mirror.scaleway/s/^/#/' /etc/apt/sources.list \
+ && apt-get -q update                   \
+ && apt-get --force-yes -y -qq upgrade  \
+ && apt-get --force-yes install -y -q   \
+    apparmor            \
+    arping              \
+    aufs-tools          \
+    btrfs-tools         \
+    bridge-utils                    \
+    cgroup-lite         \
+    git             \
+    ifupdown            \
+    kmod                \
+    lxc             \
+    python-setuptools               \
+    vlan                \
+    mailutils \
+    ssmtp \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
 COPY ssmtp_custom.conf /etc/ssmtp/ssmtp_custom.conf
 COPY entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["sh","/usr/local/bin/entrypoint.sh"]

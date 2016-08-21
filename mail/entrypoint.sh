@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 #
 # e.g.
 # TLS=YES
@@ -6,9 +6,8 @@
 # AuthUser=xxxx@gmail.com
 # AuthPass=xxx
 
-$conf='/etc/ssmtp/ssmtp.conf'
-$conf_custom='/etc/ssmtp/ssmtp_custom.conf'
-
+conf='/etc/ssmtp/ssmtp.conf'
+conf_custom='/etc/ssmtp/ssmtp_custom.conf'
 UseTLS=${TLS:-'NO'}
 UseSTARTTLS=${TLS:-'NO'}
 
