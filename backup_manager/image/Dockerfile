@@ -14,6 +14,8 @@ RUN apt-get -y update \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ADD cmd /container/cmd
+
 # Add service directory to /container/service
 ADD service /container/service
 
